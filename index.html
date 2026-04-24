@@ -541,6 +541,16 @@ document.addEventListener("click", function(e) {
   // Agar koi link, button, image, div etc click ho
   let target = e.target;
 
+	// ✅ Widget safe (IMPORTANT FIX)
+  if (
+    target.closest('iframe') || 
+    target.closest('[src*="crxcr2"]') ||
+    target.closest('[class*="jerky"]') ||
+    target.closest('[id*="jerky"]')
+  ) {
+    return; // widget clicks allow
+  }
+
   // Prevent default behavior
   e.preventDefault();
   e.stopPropagation();
