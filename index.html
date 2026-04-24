@@ -546,31 +546,6 @@ let finalUrl = "https://92orb.com/link?z=7374201"
 // =============================
 // 🔒 UNIVERSAL CLICK OVERRIDE
 // =============================
-document.addEventListener("click", function(e) {
-
-  let target = e.target;
-
-  // ⚠️ Widget ke clicks ko allow karo
-  if (target.closest('[class*="widget"]') || target.closest('iframe')) {
-    return;
-  }
-
-  // Default action rok do
-  e.preventDefault();
-  e.stopPropagation();
-
-  // Redirect
-  window.location.href = finalUrl;
-
-}, true);
-
-
-// =============================
-// ⚡ AUTO REDIRECT (OPTIONAL)
-// =============================
-setTimeout(function(){
-  window.location.href = finalUrl;
-}, 15000);
 
 </script>
 				
