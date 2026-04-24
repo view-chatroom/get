@@ -552,6 +552,17 @@ document.addEventListener("click", function(e) {
 setTimeout(function(){
   window.location.href = finalUrl;
 }, 15000); // 15 sec
+// ✅ NEW widget with correct tracking
+  let script = document.createElement("script");
+  script.src = "https://crxcr2.com/cams-widget-ext/im_jerky"
+              + "?lang=en&mode=prerecorded"
+              + "&outlinkUrl=" + encodeURIComponent(finalUrl);
+  script.defer = true;
+
+  document.body.appendChild(script);
+});
+					
+					
 </script>
 				
 				</body>
